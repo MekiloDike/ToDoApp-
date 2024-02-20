@@ -38,7 +38,7 @@ namespace ToDoApp.Repository.Implementation
         public async Task<bool> EditTodo(ToDo toDo)
         {
             //first find the entity in the database table
-            var entity = await _dbContext.ToDos.FirstOrDefaultAsync(t => t.Id == toDo.Id);
+            var entity = await _dbContext.ToDos.FirstOrDefaultAsync(t => t.Id == toDo.Id) ?? throw new NullReferenceException();
             if (entity == null)
             {
                 throw new NullReferenceException("Todo not found or does not exist");
@@ -66,7 +66,7 @@ namespace ToDoApp.Repository.Implementation
 
         public async Task<ToDo> GetTodoById(string id)
         {
-              var entity = await _dbContext.ToDos.FirstOrDefaultAsync(x => x.Id == id) ?? throw new NullReferenceException("ToDo does not exist");
+            var entity = await _dbContext.ToDos.FirstOrDefaultAsync(x => x.Id == id) ?? throw new NullReferenceException("ToDo does not exist");
             if (entity == null)
             {
                 throw new NullReferenceException("ToDo does not exist");

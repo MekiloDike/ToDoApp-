@@ -15,6 +15,8 @@ builder.Services.AddDbContext<TodoDbContext>(options =>
 //Register interface
 builder.Services.AddScoped<ITodoRepository, TodoRepository>();
 
+builder.Services.AddScoped<IAppUserRepository, AppUserRepository>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
