@@ -15,15 +15,30 @@ namespace ToDoApp.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllTodos()
         {
-            var todos =await _todoRepo.GetAllTodo();
-            return View(todos);
+            try
+            {
+                var todos = await _todoRepo.GetAllTodo();
+                return View(todos);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
 
         [HttpGet]
         public async Task<IActionResult> GetTodoById(string id)
         {
-            var todo = await _todoRepo.GetTodoById(id);
-            return View(todo);
+            try
+            {
+                var todo = await _todoRepo.GetTodoById(id);
+                return View(todo);
+
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
 
         [HttpGet]
@@ -35,44 +50,83 @@ namespace ToDoApp.Controllers
         [HttpPost]
         public async Task<IActionResult> AddTodo(ToDo entity)
         {
-            var result =await _todoRepo.AddTodo(entity);
-            if (result)
+            try
             {
-                return RedirectToAction("GetAllTodos");
+                var result = await _todoRepo.AddTodo(entity);
+                if (result)
+                {
+                    return RedirectToAction("GetAllTodos");
+                }
+                return View();
             }
-            return View();
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
         [HttpGet]
         public async Task<IActionResult> Delete(string id)
         {
-            var todo = await _todoRepo.GetTodoById(id);
-            return View(todo);
+            try
+            {
 
+                var todo = await _todoRepo.GetTodoById(id);
+                return View(todo);
+
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
 
         [HttpPost]
         public async Task<IActionResult> DeleteTodo(string id)
         {
-            await _todoRepo.DeleteTodo(id);
-            return RedirectToAction("GetAllTodos");
+            try
+            {
+                await _todoRepo.DeleteTodo(id);
+                return RedirectToAction("GetAllTodos");
+
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
 
         [HttpGet]
         public async Task<IActionResult> EditTodo(string id)
         {
-            var todo = await _todoRepo.GetTodoById(id);
-            return View(todo);
+            try
+            {
+                var todo = await _todoRepo.GetTodoById(id);
+                return View(todo);
+
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
 
         [HttpPost]
         public async Task<IActionResult> EditTodo(ToDo todo)
         {
-            var result =await _todoRepo.EditTodo(todo);
-            if (result)
+            try
             {
-                return RedirectToAction("GetAllTodos");
+
+                var result = await _todoRepo.EditTodo(todo);
+                if (result)
+                {
+                    return RedirectToAction("GetAllTodos");
+                }
+                return View();
             }
-            return View();
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
 
     }

@@ -11,6 +11,6 @@ namespace ToDoApp.Models
         public string? Email { get; set; }
         public string? Gender { get; set; }
         public int Age { get; set; }
-        public List<ToDo>? UsersTodo { get; set; }
+        public List<ToDo>? UsersTodo { get; set; }//foreign key
     }
 }

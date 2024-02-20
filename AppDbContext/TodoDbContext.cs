@@ -8,7 +8,7 @@ namespace ToDoApp.AppDbContext
         public TodoDbContext(DbContextOptions<TodoDbContext> options) : base(options)
         {
         }
-
+        
         public DbSet<ToDo> ToDos { get; set; }
         public DbSet<AppUser> AppUsers { get; set; }
 
