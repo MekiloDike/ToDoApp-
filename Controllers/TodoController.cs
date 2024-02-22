@@ -13,6 +13,7 @@ namespace ToDoApp.Controllers
         }
 
         [HttpGet]
+        //[HttpGet("AllTodos")]
         public async Task<IActionResult> GetAllTodos()
         {
             try
@@ -27,6 +28,7 @@ namespace ToDoApp.Controllers
         }
 
         [HttpGet]
+        //[Route("singleTodo")]
         public async Task<IActionResult> GetTodoById(string id)
         {
             try

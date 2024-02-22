@@ -15,8 +15,7 @@ namespace ToDoApp.Repository.Implementation
             _dbContext = dbContext;
         }
 
-        public bool AddAppUser(AppUser user)
-            
+        public bool AddAppUser(AppUser user)            
         {
             _dbContext.AppUsers.Add(user);
            var isSaved = _dbContext.SaveChanges() > 0;
